@@ -1,23 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
 
+const Nakama = (props) => {
+  console.log(props);
+  return(
+    <div className="nakama">
+      <p>My name is {props.name}</p>
+      <p>My power is {props.power}</p>
+    </div>
+  )
+}
+
 function App() {
+  const greetings = 'Halo Nakama!';
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>{greetings}</h1>
+      <Nakama name="Monkey D. Luffy" power="Gatling" />
+      <Nakama name="Roronoa Zoro" power="Santoryu" />
     </div>
   );
 }
