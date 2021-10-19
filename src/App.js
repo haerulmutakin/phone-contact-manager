@@ -1,5 +1,3 @@
-import './App.css';
-
 const Nakama = (props) => {
   console.log(props);
   return(
