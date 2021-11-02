@@ -1,4 +1,5 @@
-const ContactList = ({contacts, title}) => {
+const ContactList = ({contacts, title, onDelete}) => {
+
 
     return ( 
         <div className="contact-list">
@@ -11,7 +12,7 @@ const ContactList = ({contacts, title}) => {
                     </div>
                     <div className="contact-actions">
                         <button className="btn btn-primary">Edit</button>
-                        <button className="btn btn-danger">Delete</button>
+                        <button onClick={() => onDelete(contact.id)} className="btn btn-danger">Delete</button>
                     </div>
                 </div>
             ))}
