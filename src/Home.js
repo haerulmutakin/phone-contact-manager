@@ -1,46 +1,27 @@
 import { useState } from 'react';
 
 const Home = () => {
-    const [person, setPerson] = useState({
-        firstname: 'Roronoa',
-        lastname: 'Zoro',
-        age: 20,
-        address: {
-            address1: 'Jogja',
-            address2: 'Malang'
-        }
-    });
-
-    const handleUpdateAge = () => {
-        setPerson({
-            ...person,
-            age: 22
-        });
-    }
-
-    const handleUpdateAddress = () => {
-        setPerson({
-            ...person,
-            address: {
-                ...person.address,
-                address2: 'Surabaya'
-            }
-        });
-    }
+    const [contacts, setContacts] = useState([
+        {id: 1, name: 'Monkey D. Luffy', number: '081281212912'},
+        {id: 2, name: 'Roronoa Zoro', number: '085208651294'},
+        {id: 3, name: 'Nami', number: '081567823799'}
+    ]);
 
     return ( 
         <div className="home">
             <h3>Contact List</h3>
-            <div>Firstname: {person.firstname}</div>
-            <div>Lastname: {person.lastname}</div>
-            <div>Age: {person.age}</div>
-            <div>Address:</div>
-            <ul>
-                <li>{person.address.address1}</li>
-                <li>{person.address.address2}</li>
-            </ul>
-            <button onClick={handleUpdateAge}>Update Age</button>
-            <button onClick={handleUpdateAddress}>Update Address</button>
+            {contacts.map((contact) => (
+                <div className="contact" key={contact.id}>
+                    <div className="contact-info">
+                        <p className="contact-name">{contact.name}</p>
+                        <p>{contact.number}</p>
+                    </div>
+                    <div className="contact-actions">
+                        <button className="btn btn-primary">Edit</button>
+                        <button className="btn btn-danger">Delete</button>
+                    </div>
+                </div>
+            ))}
         </div>
      );
 }
