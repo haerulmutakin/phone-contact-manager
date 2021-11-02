@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import ContactList from './ContactList';
 
 const Home = () => {
     const [contacts, setContacts] = useState([
@@ -9,19 +10,7 @@ const Home = () => {
 
     return ( 
         <div className="home">
-            <h3>Contact List</h3>
-            {contacts.map((contact) => (
-                <div className="contact" key={contact.id}>
-                    <div className="contact-info">
-                        <p className="contact-name">{contact.name}</p>
-                        <p>{contact.number}</p>
-                    </div>
-                    <div className="contact-actions">
-                        <button className="btn btn-primary">Edit</button>
-                        <button className="btn btn-danger">Delete</button>
-                    </div>
-                </div>
-            ))}
+           <ContactList contacts={contacts} title="All Contacts" />
         </div>
      );
 }
