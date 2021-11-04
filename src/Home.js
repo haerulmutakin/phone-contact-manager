@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ContactList from './ContactList';
 
 const Home = () => {
@@ -14,9 +14,23 @@ const Home = () => {
         setContacts(filteredContacts);
     }
 
+    const [nakama, setNakama] = useState('Robin');
+
+    console.log('component is rendered');
+
+    useEffect(() => {
+        console.log('useEffect 1 is called');
+    }, [contacts]);
+
+    useEffect(() => {
+        console.log('useEffect 2 is called');
+    }, [nakama]);
+
     return ( 
         <div className="home">
            <ContactList contacts={contacts} title="All Contacts" onDelete={handleDelete} />
+           <button onClick={() => setNakama('Franky')}>Update Nakama</button>
+           <h5>{ nakama }</h5>
         </div>
      );
 }
