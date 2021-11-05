@@ -8,29 +8,18 @@ const Home = () => {
         {id: 3, name: 'Nami', number: '081567823799'}
     ]);
 
-
     const handleDelete = (id) => {
         const filteredContacts = contacts.filter((contact) => contact.id !== id  );
         setContacts(filteredContacts);
     }
 
-    const [nakama, setNakama] = useState('Robin');
-
-    console.log('component is rendered');
-
     useEffect(() => {
-        console.log('useEffect 1 is called');
-    }, [contacts]);
-
-    useEffect(() => {
-        console.log('useEffect 2 is called');
-    }, [nakama]);
+        console.log('useEffect is called');
+    }, []);
 
     return ( 
         <div className="home">
            <ContactList contacts={contacts} title="All Contacts" onDelete={handleDelete} />
-           <button onClick={() => setNakama('Franky')}>Update Nakama</button>
-           <h5>{ nakama }</h5>
         </div>
      );
 }
