@@ -1,12 +1,9 @@
 import { useState, useEffect } from 'react';
 import ContactList from './ContactList';
+import Api from './api/contact-api';
 
 const Home = () => {
-    const [contacts, setContacts] = useState([
-        {id: 1, name: 'Monkey D. Luffy', number: '081281212912'},
-        {id: 2, name: 'Roronoa Zoro', number: '085208651294'},
-        {id: 3, name: 'Nami', number: '081567823799'}
-    ]);
+    const [contacts, setContacts] = useState(null);
 
     const handleDelete = (id) => {
         const filteredContacts = contacts.filter((contact) => contact.id !== id  );
@@ -14,7 +11,9 @@ const Home = () => {
     }
 
     useEffect(() => {
-        console.log('useEffect is called');
+        Api.get('/contacts').then(res => {
+            setContacts(res.data);
+        })
     }, []);
 
     return ( 
