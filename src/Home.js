@@ -7,12 +7,8 @@ const Home = () => {
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    const handleDelete = (id) => {
-        const filteredContacts = contacts.filter((contact) => contact.id !== id  );
-        setContacts(filteredContacts);
-    }
 
-    useEffect(() => {
+    const fetchContact = () => {
         Api.get('/contacts')
             .then(res => {
                 setContacts(res.data);
@@ -23,13 +19,17 @@ const Home = () => {
             .finally(() => {
                 setLoading(false);
             })
+    }
+
+    useEffect(() => {
+        fetchContact();
     }, []);
 
     return ( 
         <div className="home">
             {loading && <div>Loading...</div>}
             {error && <div>{ error }</div>}
-          {contacts && <ContactList contacts={contacts} title="All Contacts" onDelete={handleDelete} />}
+          {contacts && <ContactList contacts={contacts} title="All Contacts" onDelete={fetchContact} />}
         </div>
      );
 }
