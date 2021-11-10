@@ -4,6 +4,16 @@
       "id": 1,
       "name": "Uzumaki Naruto",
       "number": "085388390814"
+    },
+    {
+      "id": 2,
+      "name": "Uchiha Sasuke",
+      "number": "081788390344"
+    },
+    {
+      "id": 3,
+      "name": "Haruno Sakura",
+      "number": "082588390215"
     }
   ]
 }
