@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Api from './api/contact-api';
 
 const ContactList = ({contacts, title, onDelete}) => {
@@ -19,7 +20,9 @@ const ContactList = ({contacts, title, onDelete}) => {
                         <p>{contact.number}</p>
                     </div>
                     <div className="contact-actions">
-                        <button className="btn btn-primary">Edit</button>
+                        <Link to={'/edit/' + contact.id}>
+                            <button className="btn btn-primary">Edit</button>
+                        </Link>
                         <button onClick={() => handleDeleteContact(contact.id)} className="btn btn-danger">Delete</button>
                     </div>
                 </div>

@@ -1,13 +1,24 @@
-import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useHistory, useParams } from 'react-router-dom';
 import Api from './api/contact-api';
 
 const Create = () => {
     const browserHistory = useHistory();
+    const { id } = useParams();
     const [name, setName] = useState('');
     const [number, setNumber] = useState('');
     const [loading, setLoading] = useState(false);
 
+    useEffect(() => {
+        if (id) {
+            Api.get('/contacts/' + id).then((response) => {
+                const { data } = response;
+                setName(data.name);
+                setNumber(data.number);
+            })
+        }
+        
+    }, [id]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
