@@ -25,7 +25,22 @@ const Create = () => {
         const contact = {name, number};
 
         setLoading(true);
+        if (id) {
+            updateContact(contact);
+        } else {
+            createContact(contact);
+        }
+    }
+
+    const createContact = (contact) => {
         Api.post('/contacts', contact).then(() => {
+            setLoading(false);
+            browserHistory.goBack();
+        });
+    }
+
+    const updateContact = (contact) => {
+        Api.put('/contacts/' + id, contact).then(() => {
             setLoading(false);
             browserHistory.goBack();
         });
@@ -33,7 +48,7 @@ const Create = () => {
 
     return ( 
         <div className="contact-form">
-            <h3>Contact Form</h3>
+            <h3>{ id ? 'Update' : 'Add'} Contact</h3>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label className="control-label">Contact name</label>
